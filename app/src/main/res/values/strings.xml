@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">Ping_Fct</string>
+    <string name="app_name">Ping</string>
+
+    <string name="title_start">Ping</string>
+    <string name="subtitle_start">Chatea seguro y sin riesgo</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_login">Iniciar sesión</string>
+    <string name="title_register">Registrarse</string>
+
+    <string name="title_chat">Chat</string>
+    <string name="title_profile">Perfil</string>
+    <string name="title_settings">Ajustes</string>
+    <string name="go_on">Entrar</string>
 </resources>

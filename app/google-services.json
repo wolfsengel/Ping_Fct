@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "486626219990",
+    "project_id": "ping-fct",
+    "storage_bucket": "ping-fct.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486626219990:android:f04bcee98bf5dc3348b677",
+        "android_client_info": {
+          "package_name": "com.siegengel.ping_fct"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS4AfmxiHiBIDLZrD6sY-hDbzVZYRp_U8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
