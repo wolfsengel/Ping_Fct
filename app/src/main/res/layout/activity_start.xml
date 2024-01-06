@@ -8,7 +8,7 @@
     tools:context=".StartActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/titleStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="75dp"
@@ -20,26 +20,41 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/subtitleStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/subtitle_start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/titleStart" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/slider_start"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="25dp"
-        android:background="@drawable/button_style"
+        android:background="@drawable/slider_background"
         android:clickable="false"
         android:max="100"
+        android:paddingStart="35dp"
         android:progressDrawable="@color/transparent"
-        android:thumb="@android:drawable/ic_media_play"
+        android:thumb="@drawable/slider_thumb"
+        android:thumbTint="@color/light_orange"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sliderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slider_text"
+        android:textColor="@color/light_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/slider_start"
+        app:layout_constraintEnd_toEndOf="@+id/slider_start"
+        app:layout_constraintStart_toStartOf="@+id/slider_start"
+        app:layout_constraintTop_toTopOf="@+id/slider_start" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
