@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/colunm_background"
-    tools:context=".RegisterActivity" >
+    tools:context=".LogInActivity" >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,18 +22,18 @@
             android:padding="25dp">
 
             <TextView
-                android:id="@+id/registerTitle"
+                android:id="@+id/loginTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="25dp"
-                android:text="@string/title_register"
+                android:text="@string/title_login"
                 android:textAlignment="center"
                 android:textColor="@color/dark_blue"
                 android:textSize="48sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/emailLabelReg"
+                android:id="@+id/emailLabelLog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
@@ -42,7 +42,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/emailTextReg"
+                android:id="@+id/emailTextLog"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:background="@drawable/slider_background"
@@ -51,7 +51,7 @@
                 android:paddingTop="10dp" />
 
             <TextView
-                android:id="@+id/passwordLabelReg"
+                android:id="@+id/passwordLabelLog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
@@ -60,7 +60,7 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/passwordText1Reg"
+                android:id="@+id/passwordTextLog"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginBottom="20dp"
@@ -69,24 +69,22 @@
                 android:inputType="text"
                 android:paddingTop="20dp" />
 
-            <EditText
-                android:id="@+id/passwordText2Reg"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/slider_background"
-                android:ems="10"
-                android:inputType="text"
-                android:paddingTop="20dp" />
-
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/registerButton"
+                android:id="@+id/loginButton"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="150dp"
                 android:background="@drawable/button_style"
                 android:text="@string/go_register"
                 android:textColor="@color/meat" />
+
+            <TextView
+                android:id="@+id/forgotPWDtext"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/forgotPsw"
+                android:textAlignment="center" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
-

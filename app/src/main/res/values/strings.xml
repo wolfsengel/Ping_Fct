@@ -11,5 +11,12 @@
     <string name="title_profile">Perfil</string>
     <string name="title_settings">Ajustes</string>
     <string name="go_on">Entrar</string>
+    <string name="go_back">Volver</string>
+    <string name="go_register">Registrarse</string>
     <string name="slider_text">Desliza  para entrar</string>
+    <string name="name">Nombre</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="UserName">Nombre de usuario</string>
+    <string name="forgotPsw">¿Olvidó su constraseña? Pulse aquí</string>
 </resources>
