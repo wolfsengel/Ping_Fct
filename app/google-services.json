@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "486626219990",
-    "project_id": "ping-fct",
-    "storage_bucket": "ping-fct.appspot.com"
+    "project_number": "718187594007",
+    "firebase_url": "https://ping-tfc-default-rtdb.firebaseio.com",
+    "project_id": "ping-tfc",
+    "storage_bucket": "ping-tfc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:486626219990:android:f04bcee98bf5dc3348b677",
+        "mobilesdk_app_id": "1:718187594007:android:a16ee3c605966533287752",
         "android_client_info": {
           "package_name": "com.siegengel.ping_fct"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAS4AfmxiHiBIDLZrD6sY-hDbzVZYRp_U8"
+          "current_key": "AIzaSyCPf4GeitPMyNF3KBXseqf-zFb5WzqcRyc"
         }
       ],
       "services": {

@@ -9,5 +9,6 @@
     <color name="meat">#e6dacf</color>
     <color name="light_orange">#e7c8ac</color>
     <color name="dark_orange">#e7b688</color>
+    <color name="grey_hint">#5b1b1b1b</color>
 
 </resources>

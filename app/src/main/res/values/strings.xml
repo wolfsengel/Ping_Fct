@@ -6,6 +6,13 @@
     <string name="title_home">Inicio</string>
     <string name="title_login">Iniciar sesión</string>
     <string name="title_register">Registrarse</string>
+    <string name="title_contacts">Contactos</string>
+    <string name="title_search">Buscar</string>
+    <string name="new_user">Nuevo usuario</string>
+    <string name="title_friends">Amigos</string>
+    <string name="title_requests">Solicitudes</string>
+    <string name="title_chats">Chats</string>
+    <string name="alrd_reg">Ya registrado? Pulse aquí</string>
 
     <string name="title_chat">Chat</string>
     <string name="title_profile">Perfil</string>
@@ -16,7 +23,18 @@
     <string name="slider_text">Desliza  para entrar</string>
     <string name="name">Nombre</string>
     <string name="email">Correo electrónico</string>
+    <string name="hint_email">example@gmail.com</string>
     <string name="password">Contraseña</string>
+    <string name="hint_password2">Repetir contraseña</string>
     <string name="UserName">Nombre de usuario</string>
+    <string name="hint_username">nombre.123</string>
     <string name="forgotPsw">¿Olvidó su constraseña? Pulse aquí</string>
+
+    <string name="emptyFields">No deje campos sin rellenar</string>
+    <string name="wrongPassword">Contraseñas no iguales</string>
+    <string name="wrongLogin">Inicio de Sesión incorrecto</string>
+    <string name="wrongRegister">Registro incorrecto</string>
+    <string name="goodReg">Registro Completado</string>
+    <string name="goodLogin">Inicio de Sesión correcto</string>
+
 </resources>
