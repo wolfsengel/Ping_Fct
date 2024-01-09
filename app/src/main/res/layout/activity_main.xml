@@ -28,7 +28,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/profilePicture"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="10dp"
@@ -49,13 +49,13 @@
                     app:srcCompat="@drawable/ic_settings" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/profileName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:text=" @juanita27"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintStart_toEndOf="@+id/profilePicture"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.506" />
 
