@@ -4,26 +4,72 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main_image"
+    android:background="@color/light_blue"
     tools:context=".StartActivity">
+
+    <ImageView
+        android:id="@+id/bola_grande"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bola_mini"
+        app:layout_constraintEnd_toEndOf="@+id/bola_mini"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bola_resource"
+        app:tint="@color/dark_blue" />
+
+    <ImageView
+        android:id="@+id/bola_mini"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bola_resource"
+        app:tint="@color/light_blue" />
+
+    <ImageView
+        android:id="@+id/otra_bola_grande"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="@+id/otra_bola_mini"
+        app:layout_constraintEnd_toEndOf="@id/otra_bola_mini"
+        app:layout_constraintStart_toStartOf="@+id/otra_bola_mini"
+        app:layout_constraintTop_toTopOf="@+id/otra_bola_mini"
+        app:srcCompat="@drawable/bola_resource"
+        app:tint="@color/dark_orange" />
+
+    <ImageView
+        android:id="@+id/otra_bola_mini"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/bola_resource"
+        app:tint="@color/light_blue" />
 
     <TextView
         android:id="@+id/titleStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
         android:text="@string/title_start"
-        android:textSize="96sp"
+        android:textSize="133sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.40" />
 
     <TextView
         android:id="@+id/subtitleStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/subtitle_start"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleStart" />
@@ -31,19 +77,21 @@
     <SeekBar
         android:id="@+id/slider_start"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/slider_background"
         android:clickable="false"
         android:max="100"
         android:paddingStart="35dp"
+        android:paddingEnd="35dp"
         android:progressDrawable="@color/transparent"
         android:thumb="@drawable/slider_thumb"
-        android:thumbTint="@color/light_orange"
+        android:thumbTint="@color/dark_blue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -51,7 +99,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/slider_text"
-        android:textColor="@color/light_blue"
+        android:textColor="@color/dark_blue"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/slider_start"
         app:layout_constraintEnd_toEndOf="@+id/slider_start"
         app:layout_constraintStart_toStartOf="@+id/slider_start"
