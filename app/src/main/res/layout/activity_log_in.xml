@@ -53,7 +53,7 @@
             <EditText
                 android:id="@+id/emailTextLog"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:background="@drawable/text_input_bg"
                 android:ems="10"
                 android:hint="@string/hint_email"
@@ -74,7 +74,7 @@
             <EditText
                 android:id="@+id/passwordTextLog"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="48dp"
                 android:layout_marginBottom="20dp"
                 android:background="@drawable/text_input_bg"
                 android:ems="10"
