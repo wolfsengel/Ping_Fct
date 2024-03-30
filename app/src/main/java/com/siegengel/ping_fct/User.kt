@@ -2,8 +2,8 @@ package com.siegengel.ping_fct
 
 class User {
     private lateinit var id: String
-    private lateinit var username: String
-    private lateinit var imageURL: String
+    private var username: String? = null
+    private var imageURL: String? = null
 
     constructor()
 
@@ -21,7 +21,7 @@ class User {
         this.id = id
     }
 
-    fun getUsername(): String {
+    fun getUsername(): String? {
         return username
     }
 
@@ -29,7 +29,7 @@ class User {
         this.username = username
     }
 
-    fun getImageURL(): String {
+    fun getImageURL(): String? {
         return imageURL
     }
 
