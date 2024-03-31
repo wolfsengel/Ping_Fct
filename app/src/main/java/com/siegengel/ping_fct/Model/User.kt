@@ -1,4 +1,4 @@
-package com.siegengel.ping_fct
+package com.siegengel.ping_fct.Model
 
 class User {
     private lateinit var id: String

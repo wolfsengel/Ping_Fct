@@ -1,21 +1,25 @@
-package com.siegengel.ping_fct
+package com.siegengel.ping_fct.Adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.siegengel.ping_fct.MessageActivity
+import com.siegengel.ping_fct.Model.User
+import com.siegengel.ping_fct.R
 
 class UserAdapter(private val mContext: Context, private val mUsers: List<User>) :
-    RecyclerView.Adapter<UserAdapter.ViewHolder>(){
+    RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var username: TextView
         var profilePicture: ImageView
 
-        init{
+        init {
             username = itemView.findViewById(R.id.contact_name)
             profilePicture = itemView.findViewById(R.id.contact_picture)
         }
@@ -37,6 +41,12 @@ class UserAdapter(private val mContext: Context, private val mUsers: List<User>)
             holder.profilePicture.setImageResource(R.drawable.default_profile_picture)
         } else {
             Glide.with(mContext).load(user.getImageURL()).into(holder.profilePicture)
+        }
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(mContext, MessageActivity::class.java)
+            intent.putExtra("userid", user.getId())
+            mContext.startActivity(intent)
         }
     }
 }

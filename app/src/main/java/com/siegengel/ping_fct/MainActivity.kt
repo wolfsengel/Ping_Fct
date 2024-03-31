@@ -6,11 +6,12 @@ import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.*
 import com.google.firebase.database.*
+import com.siegengel.ping_fct.Adapter.UserAdapter
+import com.siegengel.ping_fct.Model.User
 
 class MainActivity : AppCompatActivity() {
     private lateinit var profilePicture:  ImageView

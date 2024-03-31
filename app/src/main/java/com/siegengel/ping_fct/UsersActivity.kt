@@ -12,6 +12,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.siegengel.ping_fct.Adapter.UserAdapter
+import com.siegengel.ping_fct.Model.User
 
 class UsersActivity : AppCompatActivity() {
     private lateinit var recyclerUser: RecyclerView
