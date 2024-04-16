@@ -38,7 +38,7 @@ class UsersActivity : AppCompatActivity() {
 
     private fun loadContacts(){
         recyclerUser.setHasFixedSize(true)
-        recyclerUser.layoutManager = LinearLayoutManager(this)
+        recyclerUser.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         mUsers = ArrayList()
         readUsers()
     }
