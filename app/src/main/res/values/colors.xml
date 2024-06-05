@@ -13,9 +13,11 @@
 
     <color name="rich_black">#031926</color>
     <color name="cambridge_blue">#77aca2</color>
-    <color name="angel_green">#4aff4a</color>
     <color name="black_olive">#353831</color>
+    <color name="angel_green">#4aff4a</color>
     <color name="angel2_green">#20fc8f</color>
+    <color name="angel3_green">#BEEE69</color>
+    <color name="angel4_green">#A7FF83</color>
 
 
 </resources>

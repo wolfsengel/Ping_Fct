@@ -18,13 +18,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
         android:layout_toEndOf="@id/profile_image"
         android:background="@drawable/message_left"
         android:padding="5dp"
-        android:layout_marginTop="10dp"
-        android:textSize="18sp"
         android:text="Hello"
-        android:textColor="@color/white"
-        />
+        android:textColor="@color/black_olive"
+        android:textSize="18sp" />
 
 </RelativeLayout>

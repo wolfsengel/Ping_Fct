@@ -5,17 +5,8 @@
     android:id="@+id/main1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_blue"
+    android:background="@color/black_olive"
     tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/layoutRecycler"
-        app:layout_constraintStart_toStartOf="@id/layoutRecycler"
-        app:srcCompat="@drawable/main_image_cropped" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
@@ -50,7 +41,7 @@
             android:layout_marginStart="20dp"
             android:layout_weight="1"
             android:text="..."
-            android:textColor="@color/light_blue"
+            android:textColor="@color/black_olive"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/userpicture"
@@ -63,10 +54,10 @@
             android:layout_height="40dp"
             android:layout_marginEnd="7dp"
             android:src="@drawable/ic_settings"
-            app:tint="@color/light_blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/black_olive" />
 
         <ImageView
             android:id="@+id/usersBtn"
@@ -74,10 +65,10 @@
             android:layout_height="40dp"
             android:layout_marginEnd="10dp"
             android:src="@android:drawable/ic_menu_myplaces"
-            app:tint="@color/light_blue"
             app:layout_constraintBottom_toBottomOf="@+id/settingsBtn"
             app:layout_constraintEnd_toStartOf="@+id/settingsBtn"
-            app:layout_constraintTop_toTopOf="@+id/settingsBtn" />
+            app:layout_constraintTop_toTopOf="@+id/settingsBtn"
+            app:tint="@color/black_olive" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

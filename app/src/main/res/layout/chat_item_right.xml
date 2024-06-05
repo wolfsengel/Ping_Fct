@@ -14,16 +14,17 @@
             android:layout_height="wrap_content"
             android:id="@+id/profile_image"
             android:visibility="gone"/>
+
         <TextView
             android:id="@+id/show_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/message_right"
-            android:text="Que carallo tes"
             android:layout_alignParentEnd="true"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:padding="8dp"/>
+            android:background="@drawable/message_right"
+            android:padding="8dp"
+            android:text="Que carallo tes"
+            android:textColor="@color/black_olive"
+            android:textSize="18sp" />
     </RelativeLayout>
 
 </RelativeLayout>

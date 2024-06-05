@@ -24,7 +24,7 @@
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@id/contact_picture"
         android:text="..."
-        android:textColor="@color/light_blue"
+        android:textColor="@color/black_olive"
         android:textSize="20sp"
         android:textStyle="bold" />
 
