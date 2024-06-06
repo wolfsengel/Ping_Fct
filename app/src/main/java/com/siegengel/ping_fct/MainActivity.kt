@@ -6,22 +6,28 @@ import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.*
 import com.google.firebase.database.*
 import com.siegengel.ping_fct.Adapter.UserAdapter
+import com.siegengel.ping_fct.Model.Chat
 import com.siegengel.ping_fct.Model.User
 
 class MainActivity : AppCompatActivity() {
     private lateinit var profilePicture:  ImageView
     private lateinit var profileName: TextView
 
-    private lateinit var firebaseUser: FirebaseUser
+    private lateinit var fUser: FirebaseUser
     private lateinit var reference: DatabaseReference
     private lateinit var recyclerUser: RecyclerView
     private lateinit var usersBtn: ImageView
     private lateinit var settingsBtn: ImageView
+
+    private lateinit var mUsers: ArrayList<User>
+    private lateinit var usersList: ArrayList<String>
+
 
     private lateinit var userAdapter: UserAdapter
 
@@ -35,8 +41,8 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         initViews()
-        firebaseUser = FirebaseAuth.getInstance().currentUser!!
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.uid)
+        fUser = FirebaseAuth.getInstance().currentUser!!
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fUser.uid)
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(User::class.java)
@@ -66,7 +72,68 @@ class MainActivity : AppCompatActivity() {
         profilePicture = findViewById(R.id.userpicture)
         profileName = findViewById(R.id.username)
         recyclerUser = findViewById(R.id.ContactsRecycler)
+        recyclerUser.setHasFixedSize(true)
+        recyclerUser.layoutManager = LinearLayoutManager(this)
+
+        fUser = FirebaseAuth.getInstance().currentUser!!
+
+        usersList = ArrayList()
+        reference = FirebaseDatabase.getInstance().getReference("Chats")
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                usersList.clear()
+                for (snap in snapshot.children) {
+                    val chat = snap.getValue(Chat::class.java)!!
+                    if (chat.getSender().equals(fUser.uid)) {
+                        usersList.add(chat.getReceiver()!!)
+                    }
+                    if (chat.getReceiver().equals(fUser.uid)) {
+                        usersList.add(chat.getSender()!!)
+                    }
+                }
+                readChats()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO()
+            }
+        })
+
         usersBtn = findViewById(R.id.usersBtn)
         settingsBtn = findViewById(R.id.settingsBtn)
+    }
+
+    private fun readChats() {
+        mUsers = ArrayList()
+        reference = FirebaseDatabase.getInstance().getReference("Users")
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                mUsers.clear()
+                for (snap in snapshot.children) {
+                    val user = snap.getValue(User::class.java)
+
+                    // Check if user is in the chat list
+                    for (id in usersList) {
+                        if (user!!.getId() == id) {
+                            if (mUsers.size != 0) {
+                                for (user1 in mUsers) {
+                                    if (user.getId() != user1.getId()) {
+                                        mUsers.add(user)
+                                    }
+                                }
+                            } else {
+                                mUsers.add(user)
+                            }
+                        }
+                    }
+                }
+                userAdapter = UserAdapter(this@MainActivity, mUsers)
+                recyclerUser.adapter = userAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO()
+            }
+        })
     }
 }

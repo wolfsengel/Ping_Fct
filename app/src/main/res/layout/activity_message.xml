@@ -60,6 +60,9 @@
         android:background="@drawable/slider_background"
         android:ems="10"
         android:inputType="textMultiLine"
+        android:paddingStart="8dp"
+        android:paddingEnd="15dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/send_btn"
         app:layout_constraintStart_toStartOf="parent" />
