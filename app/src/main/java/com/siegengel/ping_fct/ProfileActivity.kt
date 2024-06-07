@@ -20,7 +20,6 @@ import com.siegengel.ping_fct.Model.User
 
 class ProfileActivity : AppCompatActivity() {
 
-    private lateinit var profilepicture: ImageView
     private lateinit var profilegradient: ImageView
     private lateinit var username: TextView
 
@@ -39,7 +38,6 @@ class ProfileActivity : AppCompatActivity() {
         initView()
     }
     private fun initView() {
-        profilepicture = findViewById(R.id.main_profile_picture)
         profilegradient = findViewById(R.id.bg_profile_picture)
         username = findViewById(R.id.usernameP)
 
@@ -51,10 +49,8 @@ class ProfileActivity : AppCompatActivity() {
                 val user = snapshot.getValue(User::class.java)
                 username.text = user!!.getUsername()
                 if (user.getImageURL() == "default" || user.getImageURL() == "" || user.getImageURL() == null) {
-                    profilepicture.setImageResource(R.drawable.default_profile_picture)
-                    profilegradient.setImageResource(R.color.black_olive)
+                    profilegradient.setImageResource(R.drawable.default_profile_picture)
                 } else {
-                    Glide.with(applicationContext).load(user.getImageURL()).into(profilepicture)
                     Glide.with(applicationContext).load(user.getImageURL()).into(profilegradient)
                 }
             }

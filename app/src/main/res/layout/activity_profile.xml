@@ -26,29 +26,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/gradient_shadow" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/main_profile_picture"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:layout_constraintBottom_toBottomOf="@+id/bg_profile_picture"
-        app:layout_constraintEnd_toEndOf="@+id/bg_profile_picture"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/bg_profile_picture"
-        app:shapeAppearanceOverlay="@style/RoundedImage"
-        app:srcCompat="@drawable/default_profile_picture" />
-
     <TextView
         android:id="@+id/usernameP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:text="JoseLuis69"
         android:textColor="@color/angel3_green"
-        android:textSize="25sp"
+        android:textSize="50sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/main_profile_picture"
-        app:layout_constraintStart_toStartOf="@+id/main_profile_picture"
-        app:layout_constraintTop_toBottomOf="@+id/main_profile_picture" />
+        app:layout_constraintBottom_toBottomOf="@+id/bg_profile_picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button"
