@@ -50,7 +50,7 @@ class ProfileActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(User::class.java)
                 username.text = user!!.getUsername()
-                if (user.getImageURL() == "default") {
+                if (user.getImageURL() == "default" || user.getImageURL() == "" || user.getImageURL() == null) {
                     profilepicture.setImageResource(R.drawable.default_profile_picture)
                     profilegradient.setImageResource(R.color.black_olive)
                 } else {

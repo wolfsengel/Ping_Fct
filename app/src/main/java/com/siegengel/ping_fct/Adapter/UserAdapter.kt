@@ -37,7 +37,7 @@ class UserAdapter(private val mContext: Context, private val mUsers: List<User>)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val user = mUsers[position]
         holder.username.text = user.getUsername()
-        if (user.getImageURL() == "default") {
+        if (user.getImageURL() == "default" || user.getImageURL() == "" || user.getImageURL() == null){
             holder.profilePicture.setImageResource(R.drawable.default_profile_picture)
         } else {
             Glide.with(mContext).load(user.getImageURL()).into(holder.profilePicture)
