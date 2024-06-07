@@ -13,6 +13,8 @@
     <string name="title_requests">Solicitudes</string>
     <string name="title_chats">Chats</string>
     <string name="alrd_reg">Ya registrado? Pulse aquí</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="erase_data">Borrar cuenta</string>
 
     <string name="title_chat">Chat</string>
     <string name="title_users">Usuarios</string>

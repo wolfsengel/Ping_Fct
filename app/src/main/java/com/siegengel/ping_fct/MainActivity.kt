@@ -63,8 +63,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         settingsBtn.setOnClickListener {
-            //val intent = intent.setClass(this@MainActivity, SettingsActivity::class.java)
-            //startActivity(intent)
+            val intent = intent.setClass(this@MainActivity, ProfileActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -112,16 +112,9 @@ class MainActivity : AppCompatActivity() {
                 for (snap in snapshot.children) {
                     val user = snap.getValue(User::class.java)
 
-                    // Check if user is in the chat list
                     for (id in usersList) {
                         if (user!!.getId() == id) {
-                            if (mUsers.size != 0) {
-                                for (user1 in mUsers) {
-                                    if (user.getId() != user1.getId()) {
-                                        mUsers.add(user)
-                                    }
-                                }
-                            } else {
+                            if (mUsers.none { it.getId() == user.getId() }) {
                                 mUsers.add(user)
                             }
                         }
