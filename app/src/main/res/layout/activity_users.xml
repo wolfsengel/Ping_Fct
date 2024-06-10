@@ -46,4 +46,20 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <EditText
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/slider_background"
+        android:ems="10"
+        android:inputType="text"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/search"
+        android:textColor="@color/angel3_green"
+        app:layout_constraintBottom_toTopOf="@+id/usersRecycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,16 @@
 package com.siegengel.ping_fct
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.search.SearchBar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -18,6 +22,8 @@ import com.siegengel.ping_fct.Adapter.UserAdapter
 import com.siegengel.ping_fct.Model.User
 
 class UsersActivity : AppCompatActivity() {
+
+    private lateinit var searchBar: EditText
     private lateinit var recyclerUser: RecyclerView
     private lateinit var userAdapter: UserAdapter
     private lateinit var mUsers: List<User>
@@ -38,6 +44,45 @@ class UsersActivity : AppCompatActivity() {
 
     private fun initViews() {
         recyclerUser = findViewById(R.id.usersRecycler)
+        searchBar = findViewById(R.id.search_bar)
+
+        searchBar.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                searchUsers(s.toString().lowercase())
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
+    }
+
+    private fun searchUsers(lowercase: String) {
+        val firebaseUser = FirebaseAuth.getInstance().currentUser
+        val query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("username")
+            .startAt(lowercase)
+            .endAt(lowercase + "\uf8ff")
+        query.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                (mUsers as ArrayList).clear()
+                for (dataSnapshot in snapshot.children) {
+                    val user = dataSnapshot.getValue(User::class.java)
+                    if (user!!.getId() != firebaseUser!!.uid) {
+                        (mUsers as java.util.ArrayList<User>).add(user)
+                    }
+                }
+                userAdapter = UserAdapter(this@UsersActivity, mUsers, false)
+                recyclerUser.adapter = userAdapter
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO()
+            }
+        })
     }
 
     private fun loadContacts(){
