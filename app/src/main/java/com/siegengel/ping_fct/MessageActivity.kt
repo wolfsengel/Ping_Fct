@@ -38,6 +38,8 @@ class MessageActivity : AppCompatActivity() {
     private lateinit var fuser: FirebaseUser
     private lateinit var reference: DatabaseReference
     private lateinit var intent: Intent
+
+    private lateinit var seenListener:ValueEventListener;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -81,7 +83,7 @@ class MessageActivity : AppCompatActivity() {
                 if (user.getImageURL() == "default" || user.getImageURL() == "" || user.getImageURL() == null) {
                     profilepicture.setImageResource(R.drawable.default_profile_picture)
                 } else {
-                    Glide.with(this@MessageActivity).load(user.getImageURL()).into(profilepicture)
+                    Glide.with(applicationContext).load(user.getImageURL()).into(profilepicture)
                 }
                 var quemaltodo = "default"
                 if (user.getImageURL() != null){
@@ -91,7 +93,26 @@ class MessageActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO()
+            }
+        })
+        seenMessage(userid)
+    }
+
+    private fun seenMessage(userid: String) {
+        reference = FirebaseDatabase.getInstance().getReference("Chats")
+        seenListener = reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (snap in snapshot.children) {
+                    val chat = snap.getValue(Chat::class.java)
+                    if (chat!!.getReceiver() == fuser.uid && chat.getSender() == userid) {
+                        val hashMap = HashMap<String, Any>()
+                        hashMap["isseen"] = true
+                        snap.ref.updateChildren(hashMap)
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
             }
         })
     }
@@ -102,6 +123,7 @@ class MessageActivity : AppCompatActivity() {
         hashMap["sender"] = sender
         hashMap["receiver"] = receiver
         hashMap["message"] = message
+        hashMap["isseen"] = false
         reference.child("Chats").push().setValue(hashMap)
     }
 
@@ -128,7 +150,6 @@ class MessageActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(p0: DatabaseError) {
-                TODO("Not yet implemented")
             }
         })
     }
@@ -146,6 +167,9 @@ class MessageActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
+        if (this::seenListener.isInitialized) {
+            reference.removeEventListener(seenListener)
+        }
         status("offline")
     }
 }

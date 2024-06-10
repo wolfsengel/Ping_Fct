@@ -50,12 +50,11 @@ class MainActivity : AppCompatActivity() {
                 if (user.getImageURL() == "default" || user.getImageURL() == "" || user.getImageURL() == null) {
                     profilePicture.setImageResource(R.drawable.default_profile_picture)
                 } else {
-                    Glide.with(this@MainActivity).load(user.getImageURL()).into(profilePicture)
+                    Glide.with(applicationContext).load(user.getImageURL()).into(profilePicture)
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO()
             }
         })
         usersBtn.setOnClickListener {

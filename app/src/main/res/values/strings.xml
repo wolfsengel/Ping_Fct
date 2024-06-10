@@ -16,6 +16,7 @@
     <string name="logout">Cerrar Sesión</string>
     <string name="erase_data">Borrar cuenta</string>
     <string name="search">Buscar…</string>
+    <string name="seen">visto</string>
 
     <string name="title_chat">Chat</string>
     <string name="title_users">Usuarios</string>

@@ -21,13 +21,9 @@ class MessageAdapter(private val mContext: Context, private val mChat: List<Chat
     private var fuser:FirebaseUser? = null
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var show_message: TextView
-        var profilePicture: ImageView
-
-        init {
-            show_message = itemView.findViewById(R.id.show_message)
-            profilePicture = itemView.findViewById(R.id.profile_image)
-        }
+        var show_message: TextView = itemView.findViewById(R.id.show_message)
+        var profilePicture: ImageView = itemView.findViewById(R.id.profile_image)
+        var txt_seen: TextView = itemView.findViewById(R.id.seen)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -51,6 +47,16 @@ class MessageAdapter(private val mContext: Context, private val mChat: List<Chat
             holder.profilePicture.setImageResource(R.drawable.default_profile_picture)
         } else {
             Glide.with(mContext).load(imageUrl).into(holder.profilePicture)
+        }
+
+        if (position == mChat.size - 1) {
+            if (chat.isIsseen()!!) {
+                holder.txt_seen.text = mContext.getString(R.string.seen)
+            } else {
+                holder.txt_seen.text = ""
+            }
+        } else {
+            holder.txt_seen.visibility = View.GONE
         }
     }
 

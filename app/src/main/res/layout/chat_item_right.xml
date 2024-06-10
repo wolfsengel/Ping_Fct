@@ -22,9 +22,17 @@
             android:layout_alignParentEnd="true"
             android:background="@drawable/message_right"
             android:padding="8dp"
-            android:text="Que carallo tes"
+            android:text="Cazo fai?"
             android:textColor="@color/black_olive"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/seen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/show_message"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/cambridge_blue" />
     </RelativeLayout>
 
 </RelativeLayout>
