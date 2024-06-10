@@ -8,8 +8,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.siegengel.ping_fct.Adapter.UserAdapter
@@ -19,6 +21,8 @@ class UsersActivity : AppCompatActivity() {
     private lateinit var recyclerUser: RecyclerView
     private lateinit var userAdapter: UserAdapter
     private lateinit var mUsers: List<User>
+    private lateinit var reference: DatabaseReference
+    private lateinit var fuser: FirebaseUser
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -55,7 +59,7 @@ class UsersActivity : AppCompatActivity() {
                         (mUsers as java.util.ArrayList<User>).add(user)
                     }
                 }
-                userAdapter = UserAdapter(this@UsersActivity, mUsers)
+                userAdapter = UserAdapter(this@UsersActivity, mUsers, false)
                 recyclerUser.adapter = userAdapter
             }
 
@@ -64,5 +68,22 @@ class UsersActivity : AppCompatActivity() {
             }
         })
 
+    }
+    private fun status(status: String) {
+        fuser = FirebaseAuth.getInstance().currentUser!!
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.uid)
+        val hashMap = HashMap<String, Any>()
+        hashMap["status"] = status
+        reference.updateChildren(hashMap)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        status("online")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        status("offline")
     }
 }

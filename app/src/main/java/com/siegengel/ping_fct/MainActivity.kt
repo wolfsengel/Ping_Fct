@@ -120,7 +120,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-                userAdapter = UserAdapter(this@MainActivity, mUsers)
+                userAdapter = UserAdapter(this@MainActivity, mUsers, true)
                 recyclerUser.adapter = userAdapter
             }
 
@@ -128,5 +128,22 @@ class MainActivity : AppCompatActivity() {
                 TODO()
             }
         })
+    }
+
+    private fun status(status: String) {
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fUser.uid)
+        val hashMap = HashMap<String, Any>()
+        hashMap["status"] = status
+        reference.updateChildren(hashMap)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        status("online")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        status("offline")
     }
 }

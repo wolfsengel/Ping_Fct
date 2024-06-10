@@ -132,4 +132,20 @@ class MessageActivity : AppCompatActivity() {
             }
         })
     }
+    private fun status(status: String) {
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.uid)
+        val hashMap = HashMap<String, Any>()
+        hashMap["status"] = status
+        reference.updateChildren(hashMap)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        status("online")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        status("offline")
+    }
 }

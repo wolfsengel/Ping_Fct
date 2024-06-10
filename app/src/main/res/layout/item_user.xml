@@ -27,4 +27,24 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/contact_status_on"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignStart="@+id/contact_picture"
+        android:layout_marginStart="32dp"
+        android:src="@color/angel3_green"
+        app:shapeAppearanceOverlay="@style/RoundedImage"
+        android:visibility="gone"/>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/contact_status_off"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_alignStart="@+id/contact_picture"
+        android:layout_marginStart="32dp"
+        android:src="@color/dark_orange"
+        app:shapeAppearanceOverlay="@style/RoundedImage"
+        android:visibility="gone"/>
+
+
 </RelativeLayout>

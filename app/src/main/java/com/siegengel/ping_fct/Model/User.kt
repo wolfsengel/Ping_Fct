@@ -4,13 +4,15 @@ class User {
     private lateinit var id: String
     private var username: String? = null
     private var imageURL: String? = null
+    private var status: String? = null
 
     constructor()
 
-    constructor(id: String, username: String, imageURL: String, status: String, search: String) {
+    constructor(id: String, username: String, imageURL: String, status: String) {
         this.id = id
         this.username = username
         this.imageURL = imageURL
+        this.status = status
     }
 
     fun getId(): String {
@@ -35,6 +37,14 @@ class User {
 
     fun setImageURL(imageURL: String) {
         this.imageURL = imageURL
+    }
+
+    fun getStatus(): String? {
+        return status
+    }
+
+    fun setStatus(status: String) {
+        this.status = status
     }
 
 }

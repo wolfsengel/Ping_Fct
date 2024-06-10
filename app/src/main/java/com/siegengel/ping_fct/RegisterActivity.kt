@@ -61,9 +61,11 @@ class RegisterActivity : AppCompatActivity() {
                     reference = FirebaseDatabase.getInstance().getReference("Users").child(uid)
 
                     val hashMap:HashMap<String, String> = HashMap()
-                    hashMap.put("id", uid)
-                    hashMap.put("username", username)
-                    hashMap.put("profileImage", "default")
+                    hashMap["id"] = uid
+                    hashMap["username"] = username
+                    hashMap["profileImage"] = "default"
+                    hashMap["status"] = "offline"
+                    hashMap["search"] = username.lowercase()
 
                     reference.setValue(hashMap).addOnCompleteListener(this){task2->
                         if(task2.isSuccessful){

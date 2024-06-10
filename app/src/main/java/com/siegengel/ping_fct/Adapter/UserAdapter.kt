@@ -12,17 +12,14 @@ import com.siegengel.ping_fct.MessageActivity
 import com.siegengel.ping_fct.Model.User
 import com.siegengel.ping_fct.R
 
-class UserAdapter(private val mContext: Context, private val mUsers: List<User>) :
+class UserAdapter(private val mContext: Context, private val mUsers: List<User>, private val isChat: Boolean) :
     RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var username: TextView
-        var profilePicture: ImageView
-
-        init {
-            username = itemView.findViewById(R.id.contact_name)
-            profilePicture = itemView.findViewById(R.id.contact_picture)
-        }
+        var username: TextView = itemView.findViewById(R.id.contact_name)
+        var profilePicture: ImageView = itemView.findViewById(R.id.contact_picture)
+        var imageStatusOn: ImageView = itemView.findViewById(R.id.contact_status_on)
+        var imageStatusOff: ImageView = itemView.findViewById(R.id.contact_status_off)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,6 +38,19 @@ class UserAdapter(private val mContext: Context, private val mUsers: List<User>)
             holder.profilePicture.setImageResource(R.drawable.default_profile_picture)
         } else {
             Glide.with(mContext).load(user.getImageURL()).into(holder.profilePicture)
+        }
+
+        if (isChat) {
+            if (user.getStatus() == "online") {
+                holder.imageStatusOn.visibility = View.VISIBLE
+                holder.imageStatusOff.visibility = View.GONE
+            } else {
+                holder.imageStatusOn.visibility = View.GONE
+                holder.imageStatusOff.visibility = View.VISIBLE
+            }
+        } else {
+            holder.imageStatusOn.visibility = View.GONE
+            holder.imageStatusOff.visibility = View.GONE
         }
 
         holder.itemView.setOnClickListener {
