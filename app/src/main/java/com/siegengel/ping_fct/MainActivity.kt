@@ -1,9 +1,9 @@
 package com.siegengel.ping_fct
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +12,6 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.*
 import com.google.firebase.database.*
 import com.siegengel.ping_fct.Adapter.UserAdapter
-import com.siegengel.ping_fct.Model.Chat
 import com.siegengel.ping_fct.Model.ChatList
 import com.siegengel.ping_fct.Model.User
 
@@ -26,8 +25,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var usersBtn: ImageView
     private lateinit var settingsBtn: ImageView
 
-    private lateinit var mUsers: ArrayList<User>
-    private lateinit var usersList: ArrayList<ChatList>
+    private lateinit var mUsers: List<User>
+    private lateinit var usersList: List<ChatList>
 
 
     private lateinit var userAdapter: UserAdapter
@@ -71,6 +70,7 @@ class MainActivity : AppCompatActivity() {
     private fun initViews() {
         profilePicture = findViewById(R.id.userpicture)
         profileName = findViewById(R.id.username)
+
         recyclerUser = findViewById(R.id.ContactsRecycler)
         recyclerUser.setHasFixedSize(true)
         recyclerUser.layoutManager = LinearLayoutManager(this)
@@ -78,15 +78,14 @@ class MainActivity : AppCompatActivity() {
         fUser = FirebaseAuth.getInstance().currentUser!!
 
         usersList = ArrayList()
-        //here
 
-        reference = FirebaseDatabase.getInstance().getReference("ChatList").child(fUser.uid)
+        val reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fUser.uid)
         reference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                usersList.clear()
-                for (dataSnapshot in snapshot.children) {
-                    val chatList = dataSnapshot.getValue(ChatList::class.java)
-                    usersList.add(chatList!!)
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                (usersList as ArrayList<ChatList>).clear()
+                for (snapshot in dataSnapshot.children) {
+                    val chatlist: ChatList? = snapshot.getValue(ChatList::class.java)
+                    (usersList as ArrayList<ChatList>).add(chatlist!!)
                 }
                 chatList()
             }
@@ -95,31 +94,30 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        //unitl here
-
         usersBtn = findViewById(R.id.usersBtn)
         settingsBtn = findViewById(R.id.settingsBtn)
     }
-
     private fun chatList() {
         mUsers = ArrayList()
         reference = FirebaseDatabase.getInstance().getReference("Users")
         reference.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                mUsers.clear()
-                for (dataSnapshot in snapshot.children) {
-                    val user = dataSnapshot.getValue(User::class.java)
-                    for (chatList in usersList) {
-                        if (user!!.getId() == chatList.getId()) {
-                            mUsers.add(user)
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                (mUsers as ArrayList<User>).clear()
+                for (snapshot in dataSnapshot.children) {
+                    val user = snapshot.getValue(
+                        User::class.java
+                    )
+                    for (chatlist in usersList) {
+                        if (user!!.getId() == chatlist.getId()) {
+                            (mUsers as ArrayList<User>).add(user)
                         }
                     }
                 }
                 userAdapter = UserAdapter(this@MainActivity, mUsers, true)
-                recyclerUser.adapter = userAdapter
+                recyclerUser.setAdapter(userAdapter)
             }
 
-            override fun onCancelled(error: DatabaseError) {
+            override fun onCancelled(databaseError: DatabaseError) {
             }
         })
     }
