@@ -37,7 +37,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/usersRecycler"
         android:layout_width="match_parent"
-        android:layout_height="600dp"
+        android:layout_height="500dp"
         android:background="@drawable/recycler_bg"
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -53,11 +53,12 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/slider_background"
         android:ems="10"
+        android:hint="@string/search"
         android:inputType="text"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
-        android:text="@string/search"
         android:textColor="@color/angel3_green"
+        android:textColorHint="@color/angel3_green"
         app:layout_constraintBottom_toTopOf="@+id/usersRecycler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

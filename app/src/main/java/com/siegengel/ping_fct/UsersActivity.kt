@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -29,6 +30,8 @@ class UsersActivity : AppCompatActivity() {
     private lateinit var mUsers: List<User>
     private lateinit var reference: DatabaseReference
     private lateinit var fuser: FirebaseUser
+
+    private lateinit var backBtn: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -59,6 +62,11 @@ class UsersActivity : AppCompatActivity() {
 
             }
         })
+        backBtn = findViewById(R.id.backBtn)
+        backBtn.setOnClickListener {
+            finish()
+        }
+
     }
 
     private fun searchUsers(lowercase: String) {

@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="83dp"
-        android:layout_marginBottom="60dp" />
+        android:layout_marginBottom="93dp" />
 
     <RelativeLayout
         android:id="@+id/bottom"
@@ -65,8 +65,9 @@
             android:id="@+id/message_send"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="28dp"
             android:background="@drawable/slider_background"
-            android:ems="10"
             android:inputType="textMultiLine"
             android:paddingStart="10dp"
             android:paddingEnd="15dp"
@@ -75,11 +76,11 @@
 
         <Button
             android:id="@+id/send_btn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:background="@drawable/send_btn"
+            android:background="@drawable/send_icon"
+            android:backgroundTint="@color/angel3_green"
             tools:layout_editor_absoluteX="351dp" />
 
     </RelativeLayout>
