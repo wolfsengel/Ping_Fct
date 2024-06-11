@@ -7,6 +7,16 @@
     android:background="@color/black_olive"
     tools:context=".RegisterActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="-75dp"
+        android:layout_marginTop="-100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/circle_asset" />
+
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
@@ -56,6 +66,7 @@
                 android:inputType="text"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
+                android:textColor="@color/angel3_green"
                 android:textColorHint="@color/angel3_green" />
 
             <TextView
@@ -80,6 +91,7 @@
                 android:inputType="text"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
+                android:textColor="@color/angel3_green"
                 android:textColorHint="@color/angel3_green" />
 
             <TextView
@@ -105,6 +117,7 @@
                 android:inputType="text"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
+                android:textColor="@color/angel3_green"
                 android:textColorHint="@color/angel3_green" />
 
             <EditText
@@ -117,6 +130,7 @@
                 android:inputType="text"
                 android:paddingStart="15dp"
                 android:paddingEnd="15dp"
+                android:textColor="@color/angel3_green"
                 android:textColorHint="@color/angel3_green" />
 
             <androidx.constraintlayout.widget.ConstraintLayout

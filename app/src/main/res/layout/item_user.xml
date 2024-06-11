@@ -3,15 +3,15 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/linearLayout"
-    android:layout_width="400dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/slider_background"
     android:padding="8dp">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/contact_picture"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:src="@drawable/default_profile_picture"
         app:shapeAppearanceOverlay="@style/RoundedImage" />
 
@@ -19,11 +19,12 @@
         android:id="@+id/contact_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
         android:layout_toEndOf="@id/contact_picture"
-        android:text="..."
-        android:textColor="@color/black_olive"
+        android:text="Carlos Jose"
+        android:textColor="@color/angel3_green"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -32,19 +33,33 @@
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_alignStart="@+id/contact_picture"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="40dp"
         android:src="@color/angel3_green"
-        app:shapeAppearanceOverlay="@style/RoundedImage"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:shapeAppearanceOverlay="@style/RoundedImage" />
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/contact_status_off"
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_alignStart="@+id/contact_picture"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="40dp"
         android:src="@color/dark_orange"
-        app:shapeAppearanceOverlay="@style/RoundedImage"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:shapeAppearanceOverlay="@style/RoundedImage" />
+
+    <TextView
+        android:id="@+id/last_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contact_name"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toEndOf="@id/contact_picture"
+        android:maxLines="1"
+        android:text=""
+        android:textColor="@color/cambridge_blue"
+        android:textSize="15sp" />
 
 
 </RelativeLayout>
