@@ -24,6 +24,18 @@ import com.google.firebase.database.ValueEventListener
 import com.siegengel.ping_fct.Adapter.MessageAdapter
 import com.siegengel.ping_fct.Model.Chat
 import com.siegengel.ping_fct.Model.User
+import com.siegengel.ping_fct.Notifications.APIService
+import com.siegengel.ping_fct.Notifications.Client
+import com.siegengel.ping_fct.Notifications.Data
+import com.siegengel.ping_fct.Notifications.MyResponse
+import com.siegengel.ping_fct.Notifications.Sender
+import com.siegengel.ping_fct.Notifications.Token
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.http.Query
+
 
 class MessageActivity : AppCompatActivity() {
 
@@ -39,7 +51,10 @@ class MessageActivity : AppCompatActivity() {
     private lateinit var reference: DatabaseReference
     private lateinit var intent: Intent
 
-    private lateinit var seenListener:ValueEventListener;
+    private lateinit var seenListener: ValueEventListener
+
+    private lateinit var apiService: APIService
+    private var notify = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -49,6 +64,9 @@ class MessageActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        apiService =
+            Client.getClient("https://fcm.googleapis.com/")!!.create(APIService::class.java)
 
         initView()
     }
@@ -63,6 +81,7 @@ class MessageActivity : AppCompatActivity() {
         btn_send = findViewById(R.id.send_btn)
         fuser = FirebaseAuth.getInstance().currentUser!!
         btn_send.setOnClickListener {
+            notify = true
             val msg = text_send.text.toString()
             if (msg != "") {
                 sendMessage(fuser.uid, intent.getStringExtra("userid")!!, msg)
@@ -86,7 +105,7 @@ class MessageActivity : AppCompatActivity() {
                     Glide.with(applicationContext).load(user.getImageURL()).into(profilepicture)
                 }
                 var quemaltodo = "default"
-                if (user.getImageURL() != null){
+                if (user.getImageURL() != null) {
                     quemaltodo = user.getImageURL()!!
                 }
                 readMessages(fuser.uid, userid, quemaltodo)
@@ -126,7 +145,6 @@ class MessageActivity : AppCompatActivity() {
         hashMap["isseen"] = false
         reference.child("Chats").push().setValue(hashMap)
 
-        // Add user
         val chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
             .child(fuser.uid)
             .child(intent.getStringExtra("userid")!!)
@@ -140,6 +158,57 @@ class MessageActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
             }
         })
+
+        val rfc = FirebaseDatabase.getInstance().getReference("Users").child(fuser.uid)
+        rfc.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val user = snapshot.getValue(User::class.java)
+                if (notify){
+                    sendNotifiaction(receiver, user!!.getUsername(), message)
+                }
+                notify = false
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+
+    }
+
+    private fun sendNotifiaction(receiver: String, username: String?, message: String) {
+        val tokens = FirebaseDatabase.getInstance().getReference("Tokens")
+        val query: com.google.firebase.database.Query = tokens.orderByKey().equalTo(receiver)
+        query.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                for (snapshot in dataSnapshot.children) {
+                    val token = snapshot.getValue(Token::class.java)
+                    val data = Data(
+                        fuser.uid, R.mipmap.ic_launcher,
+                        "$username: $message", "New Message",
+                        fuser.uid
+                    )
+
+                    val sender = Sender(data, token!!.getToken())
+
+                    apiService.sendNotification(sender)
+                        ?.enqueue(object : Callback<MyResponse?> {
+                            override fun onResponse(call: Call<MyResponse?>, response: Response<MyResponse?>) {
+                                if (response.code() == 200) {
+                                    if (response.body()!!.success != 1) {
+                                        Toast.makeText(this@MessageActivity, "Failed!", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                            }
+
+                            override fun onFailure(call: Call<MyResponse?>, t: Throwable) {
+                            }
+                        })
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+            }
+        })
     }
 
     private fun readMessages(myid: String, userid: String, imageurl: String) {
@@ -150,7 +219,7 @@ class MessageActivity : AppCompatActivity() {
                 mChat!!.clear()
                 for (snap in snapshot.children) {
                     val chat = snap.getValue(Chat::class.java)
-                    if(chat != null){
+                    if (chat != null) {
                         if (chat.getReceiver() == myid && chat.getSender() == userid ||
                             chat.getReceiver() == userid && chat.getSender() == myid
                         ) {
@@ -168,6 +237,7 @@ class MessageActivity : AppCompatActivity() {
             }
         })
     }
+
     private fun status(status: String) {
         reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.uid)
         val hashMap = HashMap<String, Any>()

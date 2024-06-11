@@ -51,6 +51,10 @@ dependencies {
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation("com.google.firebase:firebase-storage:21.0.0")
+    implementation("com.google.firebase:firebase-messaging:24.0.0")
+
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("com.google.android.material:material:1.11.0")

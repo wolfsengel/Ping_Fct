@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.*
 import com.google.firebase.database.*
+import com.google.firebase.messaging.FirebaseMessaging
 import com.siegengel.ping_fct.Adapter.UserAdapter
 import com.siegengel.ping_fct.Model.ChatList
 import com.siegengel.ping_fct.Model.User
+import com.siegengel.ping_fct.Notifications.Token
 
 class MainActivity : AppCompatActivity() {
     private lateinit var profilePicture:  ImageView
@@ -94,8 +96,20 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                updateToken(task.result!!)
+            }
+        }
+
         usersBtn = findViewById(R.id.usersBtn)
         settingsBtn = findViewById(R.id.settingsBtn)
+    }
+
+    private fun updateToken(token: String) {
+        val reference = FirebaseDatabase.getInstance().getReference("Tokens")
+        val token1 = Token(token)
+        reference.child(fUser.uid).setValue(token1)
     }
     private fun chatList() {
         mUsers = ArrayList()
