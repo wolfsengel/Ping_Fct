@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Ping</string>
+    <string name="app_name">Oliv</string>
 
-    <string name="title_start">Ping</string>
+    <string name="title_start">Oliv</string>
     <string name="subtitle_start">Chatea seguro y sin riesgo</string>
     <string name="title_home">Inicio</string>
     <string name="title_login">Iniciar sesión</string>
@@ -17,6 +17,8 @@
     <string name="erase_data">Borrar cuenta</string>
     <string name="search">Buscar…</string>
     <string name="seen">visto</string>
+    <string name="forgotpage">Reiniciar Contraseña</string>
+    <string name="reset">Reiniciar</string>
 
     <string name="title_chat">Chat</string>
     <string name="title_users">Usuarios</string>

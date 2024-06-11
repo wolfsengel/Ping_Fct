@@ -11,6 +11,7 @@ class LogInActivity : AppCompatActivity() {
     private lateinit var logInEmail: EditText
     private lateinit var logInPassword: EditText
     private lateinit var logInRegister: TextView
+    private lateinit var logInReset: TextView
 
     private lateinit var auth: FirebaseAuth
 
@@ -65,5 +66,10 @@ class LogInActivity : AppCompatActivity() {
         logInEmail = findViewById(R.id.emailTextLog)
         logInPassword = findViewById(R.id.passwordTextLog)
         logInRegister = findViewById(R.id.newUserBtn)
+        logInReset = findViewById(R.id.forgotPWDtext)
+        logInReset.setOnClickListener {
+            val intent = Intent(this, ResetPwdActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

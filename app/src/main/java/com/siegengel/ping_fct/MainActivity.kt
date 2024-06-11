@@ -13,6 +13,7 @@ import com.google.firebase.auth.*
 import com.google.firebase.database.*
 import com.siegengel.ping_fct.Adapter.UserAdapter
 import com.siegengel.ping_fct.Model.Chat
+import com.siegengel.ping_fct.Model.ChatList
 import com.siegengel.ping_fct.Model.User
 
 class MainActivity : AppCompatActivity() {
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var settingsBtn: ImageView
 
     private lateinit var mUsers: ArrayList<User>
-    private lateinit var usersList: ArrayList<String>
+    private lateinit var usersList: ArrayList<ChatList>
 
 
     private lateinit var userAdapter: UserAdapter
@@ -77,45 +78,40 @@ class MainActivity : AppCompatActivity() {
         fUser = FirebaseAuth.getInstance().currentUser!!
 
         usersList = ArrayList()
-        reference = FirebaseDatabase.getInstance().getReference("Chats")
+        //here
+
+        reference = FirebaseDatabase.getInstance().getReference("ChatList").child(fUser.uid)
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 usersList.clear()
-                for (snap in snapshot.children) {
-                    val chat = snap.getValue(Chat::class.java)!!
-                    if (chat.getSender().equals(fUser.uid)) {
-                        usersList.add(chat.getReceiver()!!)
-                    }
-                    if (chat.getReceiver().equals(fUser.uid)) {
-                        usersList.add(chat.getSender()!!)
-                    }
+                for (dataSnapshot in snapshot.children) {
+                    val chatList = dataSnapshot.getValue(ChatList::class.java)
+                    usersList.add(chatList!!)
                 }
-                readChats()
+                chatList()
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO()
             }
         })
+
+        //unitl here
 
         usersBtn = findViewById(R.id.usersBtn)
         settingsBtn = findViewById(R.id.settingsBtn)
     }
 
-    private fun readChats() {
+    private fun chatList() {
         mUsers = ArrayList()
         reference = FirebaseDatabase.getInstance().getReference("Users")
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 mUsers.clear()
-                for (snap in snapshot.children) {
-                    val user = snap.getValue(User::class.java)
-
-                    for (id in usersList) {
-                        if (user!!.getId() == id) {
-                            if (mUsers.none { it.getId() == user.getId() }) {
-                                mUsers.add(user)
-                            }
+                for (dataSnapshot in snapshot.children) {
+                    val user = dataSnapshot.getValue(User::class.java)
+                    for (chatList in usersList) {
+                        if (user!!.getId() == chatList.getId()) {
+                            mUsers.add(user)
                         }
                     }
                 }
@@ -124,10 +120,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO()
             }
         })
     }
+
 
     private fun status(status: String) {
         reference = FirebaseDatabase.getInstance().getReference("Users").child(fUser.uid)

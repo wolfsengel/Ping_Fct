@@ -125,6 +125,21 @@ class MessageActivity : AppCompatActivity() {
         hashMap["message"] = message
         hashMap["isseen"] = false
         reference.child("Chats").push().setValue(hashMap)
+
+        // Add user
+        val chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
+            .child(fuser.uid)
+            .child(intent.getStringExtra("userid")!!)
+        chatRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (!snapshot.exists()) {
+                    chatRef.child("id").setValue(intent.getStringExtra("userid")!!)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
     }
 
     private fun readMessages(myid: String, userid: String, imageurl: String) {
