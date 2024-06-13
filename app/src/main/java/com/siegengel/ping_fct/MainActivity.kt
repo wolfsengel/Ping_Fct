@@ -13,6 +13,7 @@ import com.google.firebase.auth.*
 import com.google.firebase.database.*
 import com.google.firebase.messaging.FirebaseMessaging
 import com.siegengel.ping_fct.Adapter.UserAdapter
+import com.siegengel.ping_fct.Model.Chat
 import com.siegengel.ping_fct.Model.ChatList
 import com.siegengel.ping_fct.Model.User
 import com.siegengel.ping_fct.Notifications.Token
@@ -67,6 +68,31 @@ class MainActivity : AppCompatActivity() {
             val intent = intent.setClass(this@MainActivity, ProfileActivity::class.java)
             startActivity(intent)
         }
+
+        reference = FirebaseDatabase.getInstance().getReference("Chats")
+        reference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                var unread = 0
+                for (snapshot in dataSnapshot.children) {
+                    val chat = snapshot.getValue(Chat::class.java)
+                    if (chat!!.getReceiver() == fUser.uid && !chat.isIsseen()!!) {
+                        unread++
+                    }
+                }
+                val profileName2 = profileName.text
+                if (unread == 0) {
+                    profileName.text = profileName2
+                } else {
+                    profileName.text = buildString {
+                        append(profileName2)
+                        append(" ($unread)")
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
     }
 
     private fun initViews() {
@@ -151,6 +177,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
+        status("offline")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
         status("offline")
     }
 }

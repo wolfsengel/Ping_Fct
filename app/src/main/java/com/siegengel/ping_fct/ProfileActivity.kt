@@ -157,4 +157,9 @@ class ProfileActivity : AppCompatActivity() {
         super.onPause()
         status("offline")
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        status("offline")
+    }
 }

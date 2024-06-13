@@ -138,4 +138,9 @@ class UsersActivity : AppCompatActivity() {
         super.onPause()
         status("offline")
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        status("offline")
+    }
 }

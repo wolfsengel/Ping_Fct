@@ -257,4 +257,9 @@ class MessageActivity : AppCompatActivity() {
         }
         status("offline")
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        status("offline")
+    }
 }
