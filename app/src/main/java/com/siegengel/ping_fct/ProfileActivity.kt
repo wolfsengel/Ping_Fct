@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -30,6 +31,8 @@ class ProfileActivity : AppCompatActivity() {
 
     private lateinit var profilegradient: ImageView
     private lateinit var username: TextView
+    private lateinit var logout: Button
+    private lateinit var erase: Button
 
     private lateinit var reference: DatabaseReference
     private lateinit var fuser: FirebaseUser
@@ -62,6 +65,25 @@ class ProfileActivity : AppCompatActivity() {
     private fun initView() {
         profilegradient = findViewById(R.id.bg_profile_picture)
         username = findViewById(R.id.usernameP)
+        logout = findViewById(R.id.logoutbtn)
+        erase = findViewById(R.id.eraseaccountbtn)
+
+        logout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, StartActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+            finish()
+        }
+
+        erase.setOnClickListener {
+            reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.uid)
+            reference.removeValue()
+            fuser.delete()
+            FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, StartActivity::class.java))
+            finish()
+        }
 
         fuser = FirebaseAuth.getInstance().currentUser!!
         reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.uid)
@@ -158,8 +180,4 @@ class ProfileActivity : AppCompatActivity() {
         status("offline")
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        status("offline")
-    }
 }

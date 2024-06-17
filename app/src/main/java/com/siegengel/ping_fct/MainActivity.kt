@@ -18,6 +18,7 @@ import com.siegengel.ping_fct.Model.ChatList
 import com.siegengel.ping_fct.Model.User
 import com.siegengel.ping_fct.Notifications.Token
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var profilePicture:  ImageView
     private lateinit var profileName: TextView
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var settingsBtn: ImageView
 
     private lateinit var mUsers: List<User>
-    private lateinit var usersList: List<ChatList>
+    private lateinit var usersList: ArrayList<ChatList>
 
 
     private lateinit var userAdapter: UserAdapter
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         initViews()
+
         fUser = FirebaseAuth.getInstance().currentUser!!
         reference = FirebaseDatabase.getInstance().getReference("Users").child(fUser.uid)
         reference.addValueEventListener(object : ValueEventListener {
@@ -79,13 +81,11 @@ class MainActivity : AppCompatActivity() {
                         unread++
                     }
                 }
-                val profileName2 = profileName.text
-                if (unread == 0) {
-                    profileName.text = profileName2
-                } else {
+
+                if (unread != 0 && unread < 2) {
                     profileName.text = buildString {
-                        append(profileName2)
-                        append(" ($unread)")
+                        append(profileName.text)
+                        append(" *")
                     }
                 }
             }
@@ -107,18 +107,19 @@ class MainActivity : AppCompatActivity() {
 
         usersList = ArrayList()
 
-        val reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fUser.uid)
+        reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fUser.getUid())
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                (usersList as ArrayList<ChatList>).clear()
+                usersList.clear()
                 for (snapshot in dataSnapshot.children) {
-                    val chatlist: ChatList? = snapshot.getValue(ChatList::class.java)
-                    (usersList as ArrayList<ChatList>).add(chatlist!!)
+                    val chatlist: ChatList = snapshot.getValue(ChatList::class.java)!!
+                    usersList.add(chatlist)
                 }
+
                 chatList()
             }
 
-            override fun onCancelled(error: DatabaseError) {
+            override fun onCancelled(databaseError: DatabaseError) {
             }
         })
 
@@ -180,8 +181,4 @@ class MainActivity : AppCompatActivity() {
         status("offline")
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        status("offline")
-    }
 }

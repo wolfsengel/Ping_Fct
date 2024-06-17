@@ -67,8 +67,8 @@ class MessageActivity : AppCompatActivity() {
 
         apiService =
             Client.getClient("https://fcm.googleapis.com/")!!.create(APIService::class.java)
-
         initView()
+
     }
 
     private fun initView() {
@@ -139,6 +139,7 @@ class MessageActivity : AppCompatActivity() {
     private fun sendMessage(sender: String, receiver: String, message: String) {
         val reference = FirebaseDatabase.getInstance().getReference()
         val hashMap = HashMap<String, Any>()
+
         hashMap["sender"] = sender
         hashMap["receiver"] = receiver
         hashMap["message"] = message
@@ -224,6 +225,7 @@ class MessageActivity : AppCompatActivity() {
                             chat.getReceiver() == userid && chat.getSender() == myid
                         ) {
                             if (mChat != null) {
+                                chat.setMessage(chat.getMessage()!!)
                                 mChat!!.add(chat)
                             }
                         }
@@ -258,8 +260,4 @@ class MessageActivity : AppCompatActivity() {
         status("offline")
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        status("offline")
-    }
 }

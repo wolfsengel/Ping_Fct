@@ -28,9 +28,11 @@
 
     <TextView
         android:id="@+id/usernameP"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="JoseLuis69"
+        android:maxLines="1"
+        android:text="..."
+        android:textAlignment="center"
         android:textColor="@color/angel3_green"
         android:textSize="50sp"
         android:textStyle="bold"
@@ -39,28 +41,30 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="300dp"
+        android:id="@+id/logoutbtn"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
         android:layout_marginBottom="25dp"
-        android:background="@drawable/slider_background"
+        android:background="@drawable/message_right"
         android:text="@string/logout"
-        android:textColor="@color/angel3_green"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/black_olive"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/eraseaccountbtn"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="300dp"
+        android:id="@+id/eraseaccountbtn"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/slider_background"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/message_left"
         android:text="@string/erase_data"
-        android:textColor="@color/dark_orange"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/backBtnprofile"
@@ -72,4 +76,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="?attr/actionModeCloseDrawable"
         app:tint="@color/angel3_green" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/message_right"
+        android:padding="10dp"
+        android:tint="@color/black_olive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/edit" />
 </androidx.constraintlayout.widget.ConstraintLayout>
