@@ -160,6 +160,20 @@ class MessageActivity : AppCompatActivity() {
             }
         })
 
+        val chatRef2 = FirebaseDatabase.getInstance().getReference("Chatlist")
+            .child(intent.getStringExtra("userid")!!)
+            .child(fuser.uid)
+        chatRef2.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (!snapshot.exists()) {
+                    chatRef2.child("id").setValue(fuser.uid)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+
         val rfc = FirebaseDatabase.getInstance().getReference("Users").child(fuser.uid)
         rfc.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

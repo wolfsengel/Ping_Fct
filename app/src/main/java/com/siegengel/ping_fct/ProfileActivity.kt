@@ -33,6 +33,8 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var username: TextView
     private lateinit var logout: Button
     private lateinit var erase: Button
+    private lateinit var editbtn: ImageView
+    private lateinit var backbtn: ImageView
 
     private lateinit var reference: DatabaseReference
     private lateinit var fuser: FirebaseUser
@@ -63,10 +65,16 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun initView() {
+        backbtn = findViewById(R.id.backBtnprofile)
+        editbtn = findViewById(R.id.editbtn)
         profilegradient = findViewById(R.id.bg_profile_picture)
         username = findViewById(R.id.usernameP)
         logout = findViewById(R.id.logoutbtn)
         erase = findViewById(R.id.eraseaccountbtn)
+
+        backbtn.setOnClickListener {
+            finish()
+        }
 
         logout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
@@ -106,7 +114,7 @@ class ProfileActivity : AppCompatActivity() {
             }
         })
 
-        profilegradient.setOnClickListener {
+        editbtn.setOnClickListener {
             openImage()
         }
     }
