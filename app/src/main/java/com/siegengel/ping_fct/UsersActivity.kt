@@ -79,7 +79,7 @@ class UsersActivity : AppCompatActivity() {
                 (mUsers as ArrayList).clear()
                 for (dataSnapshot in snapshot.children) {
                     val user = dataSnapshot.getValue(User::class.java)
-                    if (user!!.getId() != firebaseUser!!.uid) {
+                    if (user!!.getId() != firebaseUser!!.uid && user.getUsername() != "erased account") {
                         (mUsers as java.util.ArrayList<User>).add(user)
                     }
                 }
@@ -107,7 +107,7 @@ class UsersActivity : AppCompatActivity() {
                 (mUsers as ArrayList).clear()
                 for (dataSnapshot in snapshot.children) {
                     val user = dataSnapshot.getValue(User::class.java)
-                    if (user!!.getId() != firebaseUser!!.uid) {
+                    if (user!!.getId() != firebaseUser!!.uid && user.getUsername() != "erased account") {
                         (mUsers as java.util.ArrayList<User>).add(user)
                     }
                 }

@@ -108,7 +108,6 @@ class MainActivity : AppCompatActivity() {
         usersList = ArrayList()
 
         reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(fUser.uid)
-        Toast.makeText(this@MainActivity, "user id: ${fUser.uid} ", Toast.LENGTH_SHORT).show()
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 usersList.clear()
@@ -116,7 +115,6 @@ class MainActivity : AppCompatActivity() {
                     val chatList = snapshot.getValue(ChatList::class.java)
                     usersList.add(chatList!!)
                 }
-                Toast.makeText(this@MainActivity, "usersList: ${usersList.size}", Toast.LENGTH_SHORT).show()
 
                 chatList()
 
@@ -152,7 +150,6 @@ class MainActivity : AppCompatActivity() {
                         User::class.java
                     )
                     for (chatlist in usersList) {
-                        Toast.makeText(this@MainActivity, "chatlist id: ${chatlist.getId()} ", Toast.LENGTH_SHORT).show()
                         if (user!!.getId() == chatlist.getId() && user.getId() != fUser.uid) {
                             (mUsers as ArrayList<User>).add(user)
                         }

@@ -1,12 +1,11 @@
 package com.siegengel.ping_fct.Security
-
 class CryptHandler {
 
     fun encrypt(originalMessage: String): String {
-        return "$originalMessage xd"
+        return originalMessage.toByteArray().joinToString("")
     }
 
     fun decrypt(encryptedMessage: String): String {
-        return encryptedMessage.dropLast(3)
+        return encryptedMessage.chunked(2).joinToString("") { it.toInt().toChar().toString() }
     }
 }

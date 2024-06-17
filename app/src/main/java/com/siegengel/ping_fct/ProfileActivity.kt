@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -85,13 +86,30 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         erase.setOnClickListener {
-            reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.uid)
-            reference.removeValue()
-            fuser.delete()
-            FirebaseAuth.getInstance().signOut()
-            startActivity(Intent(this, StartActivity::class.java))
-            finish()
+            val user = FirebaseAuth.getInstance().currentUser
+            user?.let {
+                val updates = hashMapOf<String, Any>(
+                    "username" to "erased account",
+                    "profileImage" to "default",
+                    "status" to "offline",
+                    "search" to "漢語",
+                )
+                FirebaseDatabase.getInstance().getReference("Users")
+                    .child(user.uid).updateChildren(updates)
+            }
+            // Delete user from Firebase Authentication
+            user?.delete()
+                ?.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "User account deleted.", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, StartActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                        finish()
+                    }
+                }
         }
+
 
         fuser = FirebaseAuth.getInstance().currentUser!!
         reference = FirebaseDatabase.getInstance().getReference("Users").child(fuser.uid)
