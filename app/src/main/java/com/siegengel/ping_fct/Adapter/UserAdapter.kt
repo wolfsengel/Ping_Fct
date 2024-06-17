@@ -17,6 +17,7 @@ import com.siegengel.ping_fct.MessageActivity
 import com.siegengel.ping_fct.Model.Chat
 import com.siegengel.ping_fct.Model.User
 import com.siegengel.ping_fct.R
+import com.siegengel.ping_fct.Security.CryptHandler.Companion.decrypt
 
 
 class UserAdapter(private val mContext: Context, private val mUsers: List<User>, private val isChat: Boolean) :
@@ -45,7 +46,7 @@ class UserAdapter(private val mContext: Context, private val mUsers: List<User>,
                         if (chat.getReceiver() == firebaseUser.uid && chat.getSender() == userid ||
                             chat.getReceiver() == userid && chat.getSender() == firebaseUser.uid
                         ) {
-                            lastmessage = chat.getMessage()!!
+                            lastmessage = decrypt(chat.getMessage()!!)
                         }
                     }
                 }

@@ -30,6 +30,8 @@ import com.siegengel.ping_fct.Notifications.Data
 import com.siegengel.ping_fct.Notifications.MyResponse
 import com.siegengel.ping_fct.Notifications.Sender
 import com.siegengel.ping_fct.Notifications.Token
+import com.siegengel.ping_fct.Security.CryptHandler.Companion.decrypt
+import com.siegengel.ping_fct.Security.CryptHandler.Companion.encrypt
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -142,7 +144,7 @@ class MessageActivity : AppCompatActivity() {
 
         hashMap["sender"] = sender
         hashMap["receiver"] = receiver
-        hashMap["message"] = message
+        hashMap["message"] = encrypt(message)
         hashMap["isseen"] = false
         reference.child("Chats").push().setValue(hashMap)
 
@@ -239,7 +241,7 @@ class MessageActivity : AppCompatActivity() {
                             chat.getReceiver() == userid && chat.getSender() == myid
                         ) {
                             if (mChat != null) {
-                                chat.setMessage(chat.getMessage()!!)
+                                chat.setMessage(decrypt(chat.getMessage()!!))
                                 mChat!!.add(chat)
                             }
                         }
