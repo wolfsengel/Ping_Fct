@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -31,10 +32,11 @@ import java.io.File
 class ProfileActivity : AppCompatActivity() {
 
     private lateinit var profilegradient: ImageView
-    private lateinit var username: TextView
+    private lateinit var username: EditText
     private lateinit var logout: Button
     private lateinit var erase: Button
     private lateinit var editbtn: ImageView
+    private lateinit var editbtn2: ImageView
     private lateinit var backbtn: ImageView
 
     private lateinit var reference: DatabaseReference
@@ -68,13 +70,25 @@ class ProfileActivity : AppCompatActivity() {
     private fun initView() {
         backbtn = findViewById(R.id.backBtnprofile)
         editbtn = findViewById(R.id.editbtn)
+        editbtn2 = findViewById(R.id.editbtn2)
         profilegradient = findViewById(R.id.bg_profile_picture)
         username = findViewById(R.id.usernameP)
         logout = findViewById(R.id.logoutbtn)
         erase = findViewById(R.id.eraseaccountbtn)
-
         backbtn.setOnClickListener {
             finish()
+        }
+
+        editbtn2.setOnClickListener {
+            //el texto en username se convierte en el nuevo username
+            val user = FirebaseAuth.getInstance().currentUser
+            user?.let {
+                val updates = hashMapOf<String, Any>(
+                    "username" to username.text.toString()
+                )
+                FirebaseDatabase.getInstance().getReference("Users")
+                    .child(user.uid).updateChildren(updates)
+            }
         }
 
         logout.setOnClickListener {
@@ -119,11 +133,15 @@ class ProfileActivity : AppCompatActivity() {
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val user = snapshot.getValue(User::class.java)
-                username.text = user!!.getUsername()
-                if (user.getImageURL() == "default" || user.getImageURL() == "" || user.getImageURL() == null) {
-                    profilegradient.setImageResource(R.drawable.default_profile_picture)
-                } else {
-                    Glide.with(applicationContext).load(user.getImageURL()).into(profilegradient)
+                //borrar el contenido de username y poner el username del usuario
+                username.text.clear()
+                username.text.append(user?.getUsername())
+                if (user != null) {
+                    if (user.getImageURL() == "default" || user.getImageURL() == "" || user.getImageURL() == null) {
+                        profilegradient.setImageResource(R.drawable.default_profile_picture)
+                    } else {
+                        Glide.with(applicationContext).load(user.getImageURL()).into(profilegradient)
+                    }
                 }
             }
 

@@ -26,12 +26,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/gradient_shadow" />
 
-    <TextView
+    <EditText
         android:id="@+id/usernameP"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:inputType="text"
         android:maxLines="1"
-        android:text="..."
         android:textAlignment="center"
         android:textColor="@color/angel3_green"
         android:textSize="50sp"
@@ -85,8 +86,21 @@
         android:layout_marginEnd="10dp"
         android:background="@drawable/message_right"
         android:padding="10dp"
-        android:tint="@color/black_olive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/edit" />
+        app:srcCompat="@drawable/edit"
+        app:tint="@color/black_olive" />
+
+    <ImageView
+        android:id="@+id/editbtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:background="@drawable/message_right"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bg_profile_picture"
+        app:layout_constraintStart_toEndOf="@+id/usernameP"
+        app:layout_constraintTop_toTopOf="@+id/usernameP"
+        app:srcCompat="@drawable/edit"
+        app:tint="@color/black_olive" />
 </androidx.constraintlayout.widget.ConstraintLayout>
