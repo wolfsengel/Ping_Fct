@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Oliv</string>
+
+    <string name="title_start" translatable="false">Oliv</string>
+    <string name="subtitle_start">安全无风险聊天</string>
+    <string name="title_home">首页</string>
+    <string name="title_login">登录</string>
+    <string name="title_register">注册</string>
+    <string name="title_contacts">联系人</string>
+    <string name="title_search">搜索</string>
+    <string name="new_user">新用户</string>
+    <string name="title_friends">朋友</string>
+    <string name="title_requests">请求</string>
+    <string name="title_chats">聊天</string>
+    <string name="alrd_reg">已经注册？点击这里</string>
+    <string name="logout">登出</string>
+    <string name="erase_data">删除账户</string>
+    <string name="search">搜索…</string>
+    <string name="seen">已读</string>
+    <string name="forgotpage">重置密码</string>
+    <string name="reset">重置</string>
+
+    <string name="title_chat">聊天</string>
+    <string name="title_users">用户</string>
+    <string name="title_profile">个人资料</string>
+    <string name="title_settings">设置</string>
+    <string name="go_on">进入</string>
+    <string name="go_back">返回</string>
+    <string name="go_register">注册</string>
+    <string name="slider_text">滑动进入</string>
+    <string name="name">姓名</string>
+    <string name="email">电子邮箱</string>
+    <string name="hint_email" translatable="false">example@gmail.com</string>
+    <string name="password">密码</string>
+    <string name="hint_password2">重复密码</string>
+    <string name="UserName">用户名</string>
+    <string name="hint_username">用户名.123</string>
+    <string name="forgotPsw">忘记密码？点击这里</string>
+
+    <string name="emptyFields">请填写所有字段</string>
+    <string name="wrongPassword">密码不匹配</string>
+    <string name="wrongLogin">登录错误</string>
+    <string name="wrongRegister">注册错误</string>
+    <string name="goodReg">注册完成</string>
+    <string name="goodLogin">登录成功</string>
+
+</resources>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Oliv</string>
+
+    <string name="title_start" translatable="false">Oliv</string>
+    <string name="subtitle_start">Chat safely and securely</string>
+    <string name="title_home">Home</string>
+    <string name="title_login">Login</string>
+    <string name="title_register">Register</string>
+    <string name="title_contacts">Contacts</string>
+    <string name="title_search">Search</string>
+    <string name="new_user">New user</string>
+    <string name="title_friends">Friends</string>
+    <string name="title_requests">Requests</string>
+    <string name="title_chats">Chats</string>
+    <string name="alrd_reg">Already registered? Click here</string>
+    <string name="logout">Logout</string>
+    <string name="erase_data">Delete account</string>
+    <string name="search">Search…</string>
+    <string name="seen">seen</string>
+    <string name="forgotpage">Reset Password</string>
+    <string name="reset">Reset</string>
+
+    <string name="title_chat">Chat</string>
+    <string name="title_users">Users</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_settings">Settings</string>
+    <string name="go_on">Enter</string>
+    <string name="go_back">Go back</string>
+    <string name="go_register">Register</string>
+    <string name="slider_text">Slide to enter</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="hint_email" translatable="false">example@gmail.com</string>
+    <string name="password">Password</string>
+    <string name="hint_password2">Repeat password</string>
+    <string name="UserName">Username</string>
+    <string name="hint_username">username.123</string>
+    <string name="forgotPsw">Forgot your password? Click here</string>
+
+    <string name="emptyFields">Do not leave fields empty</string>
+    <string name="wrongPassword">Passwords do not match</string>
+    <string name="wrongLogin">Incorrect login</string>
+    <string name="wrongRegister">Incorrect registration</string>
+    <string name="goodReg">Registration completed</string>
+    <string name="goodLogin">Login successful</string>
+
+</resources>

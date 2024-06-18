@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Oliv</string>
+
+    <string name="title_start" translatable="false">Oliv</string>
+    <string name="subtitle_start">Sicher und risikofrei chatten</string>
+    <string name="title_home">Startseite</string>
+    <string name="title_login">Anmelden</string>
+    <string name="title_register">Registrieren</string>
+    <string name="title_contacts">Kontakte</string>
+    <string name="title_search">Suchen</string>
+    <string name="new_user">Neuer Benutzer</string>
+    <string name="title_friends">Freunde</string>
+    <string name="title_requests">Anfragen</string>
+    <string name="title_chats">Chats</string>
+    <string name="alrd_reg">Bereits registriert? Klicken Sie hier</string>
+    <string name="logout">Abmelden</string>
+    <string name="erase_data">Konto löschen</string>
+    <string name="search">Suchen…</string>
+    <string name="seen">gesehen</string>
+    <string name="forgotpage">Passwort zurücksetzen</string>
+    <string name="reset">Zurücksetzen</string>
+
+    <string name="title_chat">Chat</string>
+    <string name="title_users">Benutzer</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_settings">Einstellungen</string>
+    <string name="go_on">Eintreten</string>
+    <string name="go_back">Zurück</string>
+    <string name="go_register">Registrieren</string>
+    <string name="slider_text">Zum Eintreten wischen</string>
+    <string name="name">Name</string>
+    <string name="email">E-Mail</string>
+    <string name="hint_email" translatable="false">example@gmail.com</string>
+    <string name="password">Passwort</string>
+    <string name="hint_password2">Passwort wiederholen</string>
+    <string name="UserName">Benutzername</string>
+    <string name="hint_username">benutzername.123</string>
+    <string name="forgotPsw">Passwort vergessen? Klicken Sie hier</string>
+
+    <string name="emptyFields">Bitte alle Felder ausfüllen</string>
+    <string name="wrongPassword">Passwörter stimmen nicht überein</string>
+    <string name="wrongLogin">Falsche Anmeldung</string>
+    <string name="wrongRegister">Falsche Registrierung</string>
+    <string name="goodReg">Registrierung abgeschlossen</string>
+    <string name="goodLogin">Anmeldung erfolgreich</string>
+
+</resources>

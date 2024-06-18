@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Oliv</string>
+
+    <string name="title_start" translatable="false">Oliv</string>
+    <string name="subtitle_start">Chatujte bezpečně a bez rizika</string>
+    <string name="title_home">Domů</string>
+    <string name="title_login">Přihlásit se</string>
+    <string name="title_register">Registrovat se</string>
+    <string name="title_contacts">Kontakty</string>
+    <string name="title_search">Hledat</string>
+    <string name="new_user">Nový uživatel</string>
+    <string name="title_friends">Přátelé</string>
+    <string name="title_requests">Žádosti</string>
+    <string name="title_chats">Chaty</string>
+    <string name="alrd_reg">Již registrován? Klikněte zde</string>
+    <string name="logout">Odhlásit se</string>
+    <string name="erase_data">Smazat účet</string>
+    <string name="search">Hledat…</string>
+    <string name="seen">viděno</string>
+    <string name="forgotpage">Obnovit heslo</string>
+    <string name="reset">Obnovit</string>
+
+    <string name="title_chat">Chat</string>
+    <string name="title_users">Uživatelé</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_settings">Nastavení</string>
+    <string name="go_on">Vstoupit</string>
+    <string name="go_back">Zpět</string>
+    <string name="go_register">Registrovat se</string>
+    <string name="slider_text">Posuňte pro vstup</string>
+    <string name="name">Jméno</string>
+    <string name="email">Email</string>
+    <string name="hint_email" translatable="false">example@gmail.com</string>
+    <string name="password">Heslo</string>
+    <string name="hint_password2">Zopakujte heslo</string>
+    <string name="UserName">Uživatelské jméno</string>
+    <string name="hint_username">uzivatel.123</string>
+    <string name="forgotPsw">Zapomněli jste heslo? Klikněte zde</string>
+
+    <string name="emptyFields">Nezanechávejte žádná pole prázdná</string>
+    <string name="wrongPassword">Hesla se neshodují</string>
+    <string name="wrongLogin">Nesprávné přihlášení</string>
+    <string name="wrongRegister">Nesprávná registrace</string>
+    <string name="goodReg">Registrace dokončena</string>
+    <string name="goodLogin">Přihlášení úspěšné</string>
+
+</resources>

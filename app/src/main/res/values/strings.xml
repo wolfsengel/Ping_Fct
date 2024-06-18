@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Oliv</string>
+    <string name="app_name" translatable="false">Oliv</string>
 
-    <string name="title_start">Oliv</string>
+    <string name="title_start" translatable="false">Oliv</string>
     <string name="subtitle_start">Chatea seguro y sin riesgo</string>
     <string name="title_home">Inicio</string>
     <string name="title_login">Iniciar sesión</string>
@@ -30,7 +31,7 @@
     <string name="slider_text">Desliza  para entrar</string>
     <string name="name">Nombre</string>
     <string name="email">Correo electrónico</string>
-    <string name="hint_email">example@gmail.com</string>
+    <string name="hint_email" translatable="false">example@gmail.com</string>
     <string name="password">Contraseña</string>
     <string name="hint_password2">Repetir contraseña</string>
     <string name="UserName">Nombre de usuario</string>

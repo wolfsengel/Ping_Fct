@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Oliv</string>
+
+    <string name="title_start" translatable="false">Oliv</string>
+    <string name="subtitle_start">Chat sikkert og trygt</string>
+    <string name="title_home">Hjem</string>
+    <string name="title_login">Log ind</string>
+    <string name="title_register">Registrer</string>
+    <string name="title_contacts">Kontakter</string>
+    <string name="title_search">Søg</string>
+    <string name="new_user">Ny bruger</string>
+    <string name="title_friends">Venner</string>
+    <string name="title_requests">Anmodninger</string>
+    <string name="title_chats">Chats</string>
+    <string name="alrd_reg">Allerede registreret? Klik her</string>
+    <string name="logout">Log ud</string>
+    <string name="erase_data">Slet konto</string>
+    <string name="search">Søg…</string>
+    <string name="seen">set</string>
+    <string name="forgotpage">Nulstil adgangskode</string>
+    <string name="reset">Nulstil</string>
+
+    <string name="title_chat">Chat</string>
+    <string name="title_users">Brugere</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_settings">Indstillinger</string>
+    <string name="go_on">Gå ind</string>
+    <string name="go_back">Gå tilbage</string>
+    <string name="go_register">Registrer</string>
+    <string name="slider_text">Stryg for at gå ind</string>
+    <string name="name">Navn</string>
+    <string name="email">Email</string>
+    <string name="hint_email" translatable="false">example@gmail.com</string>
+    <string name="password">Adgangskode</string>
+    <string name="hint_password2">Gentag adgangskode</string>
+    <string name="UserName">Brugernavn</string>
+    <string name="hint_username">brugernavn.123</string>
+    <string name="forgotPsw">Glemt adgangskode? Klik her</string>
+
+    <string name="emptyFields">Udfyld alle felter</string>
+    <string name="wrongPassword">Adgangskoderne er ikke ens</string>
+    <string name="wrongLogin">Forkert login</string>
+    <string name="wrongRegister">Forkert registrering</string>
+    <string name="goodReg">Registrering fuldført</string>
+    <string name="goodLogin">Login vellykket</string>
+
+</resources>

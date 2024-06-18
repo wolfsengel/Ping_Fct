@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Oliv</string>
+
+    <string name="title_start" translatable="false">Oliv</string>
+    <string name="subtitle_start">Безопасный и безрисковый чат</string>
+    <string name="title_home">Главная</string>
+    <string name="title_login">Войти</string>
+    <string name="title_register">Регистрация</string>
+    <string name="title_contacts">Контакты</string>
+    <string name="title_search">Поиск</string>
+    <string name="new_user">Новый пользователь</string>
+    <string name="title_friends">Друзья</string>
+    <string name="title_requests">Запросы</string>
+    <string name="title_chats">Чаты</string>
+    <string name="alrd_reg">Уже зарегистрированы? Нажмите здесь</string>
+    <string name="logout">Выйти</string>
+    <string name="erase_data">Удалить аккаунт</string>
+    <string name="search">Поиск…</string>
+    <string name="seen">просмотрено</string>
+    <string name="forgotpage">Сбросить пароль</string>
+    <string name="reset">Сбросить</string>
+
+    <string name="title_chat">Чат</string>
+    <string name="title_users">Пользователи</string>
+    <string name="title_profile">Профиль</string>
+    <string name="title_settings">Настройки</string>
+    <string name="go_on">Войти</string>
+    <string name="go_back">Назад</string>
+    <string name="go_register">Зарегистрироваться</string>
+    <string name="slider_text">Проведите, чтобы войти</string>
+    <string name="name">Имя</string>
+    <string name="email">Электронная почта</string>
+    <string name="hint_email" translatable="false">example@gmail.com</string>
+    <string name="password">Пароль</string>
+    <string name="hint_password2">Повторите пароль</string>
+    <string name="UserName">Имя пользователя</string>
+    <string name="hint_username">имя.123</string>
+    <string name="forgotPsw">Забыли пароль? Нажмите здесь</string>
+
+    <string name="emptyFields">Пожалуйста, заполните все поля</string>
+    <string name="wrongPassword">Пароли не совпадают</string>
+    <string name="wrongLogin">Неправильный логин</string>
+    <string name="wrongRegister">Ошибка регистрации</string>
+    <string name="goodReg">Регистрация завершена</string>
+    <string name="goodLogin">Вход выполнен успешно</string>
+
+</resources>

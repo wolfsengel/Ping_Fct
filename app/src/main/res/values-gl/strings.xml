@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Oliv</string>
+
+    <string name="title_start" translatable="false">Oliv</string>
+    <string name="subtitle_start">Chatea seguro e sen risco</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_login">Iniciar sesión</string>
+    <string name="title_register">Rexistrarse</string>
+    <string name="title_contacts">Contactos</string>
+    <string name="title_search">Buscar</string>
+    <string name="new_user">Novo usuario</string>
+    <string name="title_friends">Amigos</string>
+    <string name="title_requests">Solicitudes</string>
+    <string name="title_chats">Chats</string>
+    <string name="alrd_reg">Xa rexistrado? Pulse aquí</string>
+    <string name="logout">Pechar sesión</string>
+    <string name="erase_data">Eliminar conta</string>
+    <string name="search">Buscar…</string>
+    <string name="seen">visto</string>
+    <string name="forgotpage">Restablecer contrasinal</string>
+    <string name="reset">Restablecer</string>
+
+    <string name="title_chat">Chat</string>
+    <string name="title_users">Usuarios</string>
+    <string name="title_profile">Perfil</string>
+    <string name="title_settings">Axustes</string>
+    <string name="go_on">Entrar</string>
+    <string name="go_back">Volver</string>
+    <string name="go_register">Rexistrarse</string>
+    <string name="slider_text">Deslice para entrar</string>
+    <string name="name">Nome</string>
+    <string name="email">Correo electrónico</string>
+    <string name="hint_email" translatable="false">example@gmail.com</string>
+    <string name="password">Contrasinal</string>
+    <string name="hint_password2">Repetir contrasinal</string>
+    <string name="UserName">Nome de usuario</string>
+    <string name="hint_username">nome.123</string>
+    <string name="forgotPsw">Esqueceu o seu contrasinal? Pulse aquí</string>
+
+    <string name="emptyFields">Non deixe campos sen cubrir</string>
+    <string name="wrongPassword">Os contrasinais non coinciden</string>
+    <string name="wrongLogin">Inicio de sesión incorrecto</string>
+    <string name="wrongRegister">Rexistro incorrecto</string>
+    <string name="goodReg">Rexistro completado</string>
+    <string name="goodLogin">Inicio de sesión correcto</string>
+
+</resources>
