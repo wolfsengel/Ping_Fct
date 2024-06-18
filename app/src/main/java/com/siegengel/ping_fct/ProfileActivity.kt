@@ -28,6 +28,7 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.siegengel.ping_fct.Model.User
 import java.io.File
+import java.util.Locale
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -45,6 +46,14 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var storageReference: StorageReference
     private lateinit var imageUri: Uri
     private lateinit var uploadTask: StorageReference
+
+
+    private lateinit var language_es: Button
+    private lateinit var language_gl: Button
+    private lateinit var language_ch: Button
+    private lateinit var language_dn: Button
+    private lateinit var language_cz: Button
+
 
     private val openImageResultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -78,6 +87,58 @@ class ProfileActivity : AppCompatActivity() {
         backbtn.setOnClickListener {
             finish()
         }
+
+        language_gl = findViewById(R.id.language_gl)
+        language_gl.setOnClickListener {
+            val locale = Locale("gl")
+            Locale.setDefault(locale)
+            val config = resources.configuration
+            config.locale = locale
+            resources.updateConfiguration(config, resources.displayMetrics)
+            recreate()
+        }
+
+        language_dn = findViewById(R.id.language_dn)
+        language_dn.setOnClickListener {
+            val locale = Locale("da")
+            Locale.setDefault(locale)
+            val config = resources.configuration
+            config.locale = locale
+            resources.updateConfiguration(config, resources.displayMetrics)
+            recreate()
+        }
+
+        language_ch = findViewById(R.id.language_ch)
+        language_ch.setOnClickListener {
+            val locale = Locale("zh")
+            Locale.setDefault(locale)
+            val config = resources.configuration
+            config.locale = locale
+            resources.updateConfiguration(config, resources.displayMetrics)
+            recreate()
+        }
+
+        language_cz = findViewById(R.id.language_cz)
+        language_cz.setOnClickListener {
+            val locale = Locale("cs")
+            Locale.setDefault(locale)
+            val config = resources.configuration
+            config.locale = locale
+            resources.updateConfiguration(config, resources.displayMetrics)
+            recreate()
+        }
+
+        language_es = findViewById(R.id.language_es)
+        language_es.setOnClickListener {
+            val locale = Locale("es")
+            Locale.setDefault(locale)
+            val config = resources.configuration
+            config.locale = locale
+            resources.updateConfiguration(config, resources.displayMetrics)
+            recreate()
+        }
+
+
 
         editbtn2.setOnClickListener {
             //el texto en username se convierte en el nuevo username
